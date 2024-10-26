@@ -1,0 +1,7 @@
+blockdevices:
+  - path: /dev/sda
+    size: 388.4M
+  - path: /dev/sdb
+    size: 2G
+  - path: /dev/sdc
+    size: 1T
