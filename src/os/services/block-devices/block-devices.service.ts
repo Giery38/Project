@@ -29,7 +29,7 @@ export class BlockDevicesService implements OnModuleInit, OnModuleDestroy {
     }
     private async registerBlockDevices() {
        const commandResult: CommandResult = await this.commandExecutor.execute(`lsblk -J -o PATH,SIZE`) as CommandResult
-       if(commandResult.stderr) {
+       if(commandResult.stderr || !commandResult.stdout) {
          throw new Error("Command lsblk error")
        }
        const blockDevices: BlockDevices = await this.yamlServiceService.Load<BlockDevices>(commandResult.stdout, BlockDevices)
